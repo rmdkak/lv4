@@ -89,6 +89,9 @@ const Btn = styled.button`
   border: 2px solid #2ff40a;
   padding: 10px;
   font-size: 25px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default WriteForm;

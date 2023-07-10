@@ -1,29 +1,17 @@
 import React from "react";
 import { styled } from "styled-components";
 import Sidebar from "./Sidebar";
+import { Link } from "react-router-dom";
 
 const Main = () => {
+  const kategorie = null;
   return (
     <StMainContainer>
       <Sidebar />
       <StSection>
         <MainList>
-          {`//TITLE`}
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
-          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          {`//TITLE ${kategorie ?? ""}`}
+          <LinkPost to={"/detail:id"}>{`<a herf=name/>`}</LinkPost>
         </MainList>
         <MaskImg src="/pixelMask.png" alt="" />
       </StSection>
@@ -53,10 +41,13 @@ const StSection = styled.section`
   padding: 20px 10px 20px 50px;
 `;
 const MainList = styled.ul`
+  display: flex;
+  flex-direction: column;
   font-size: xxx-large;
   gap: 10px;
 `;
-const LinkPost = styled.li`
+const LinkPost = styled(Link)`
+  font-size: 45px;
   padding: 10px 20px 10px 100px;
 `;
 const MaskImg = styled.img`
