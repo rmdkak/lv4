@@ -1,14 +1,38 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   return (
     <StSidebar>
       <SidebarTitle>{`//KETEGORIE`}</SidebarTitle>
       <KetegorieBox>
         <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
+        <KetegorieList>{`<li name/>`}</KetegorieList>
       </KetegorieBox>
-      <WriteBtn>{`//WRITE`}</WriteBtn>
+      <WriteBtn onClick={() => navigate("/write")}>{`//WRITE`}</WriteBtn>
     </StSidebar>
   );
 };
@@ -30,9 +54,18 @@ const KetegorieBox = styled.ul`
   text-align: center;
   border: 2px solid #2ff40a;
   width: 220px;
-  padding: 20px;
+  max-height: 492px;
+  padding: 20px 20px 20px 25px;
   gap: 20px;
-  overflow: hidden;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 100%;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid #2ff40a;
+    background-color: #2ff40a;
+  }
 `;
 
 const KetegorieList = styled.li`
@@ -40,8 +73,7 @@ const KetegorieList = styled.li`
 `;
 const WriteBtn = styled.button`
   border: 2px solid #2ff40a;
-  width: 220px;
-  height: 80px;
+  padding: 10px 51px 10px 51px;
   font-size: 30px;
   position: sticky;
   top: 83%;

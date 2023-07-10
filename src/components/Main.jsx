@@ -10,6 +10,20 @@ const Main = () => {
         <MainList>
           {`//TITLE`}
           <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
+          <LinkPost>{`<a herf=name/>`}</LinkPost>
         </MainList>
         <MaskImg src="/pixelMask.png" alt="" />
       </StSection>
@@ -21,8 +35,8 @@ const Main = () => {
 const StMainContainer = styled.main`
   display: grid;
   grid-template-columns: 1fr 5fr;
-  height: 90%;
-  padding-bottom: 42px;
+  height: 93%;
+  padding-bottom: 43px;
   overflow: scroll;
   &::-webkit-scrollbar {
     width: 5px;

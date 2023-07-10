@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <StHeader>
       <StHeadbar>
@@ -9,6 +12,8 @@ const Header = () => {
         <CloseImg></CloseImg>
       </StHeadbar>
       <StNav>
+        <button onClick={() => navigate(-1)}>{`<`}</button>
+        <button onClick={() => navigate(+1)}>{`>`}</button>
         <FakeURL>https://www.fakeblog.com</FakeURL>
       </StNav>
     </StHeader>
@@ -55,7 +60,7 @@ const StNav = styled.nav`
 
 const FakeURL = styled.div`
   border: 2px solid #2ff40a;
-  width: 1300px;
+  width: 80%;
   padding-left: 50px;
   font-size: 14px;
   line-height: 20px;

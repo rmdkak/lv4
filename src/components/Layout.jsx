@@ -17,8 +17,6 @@ const Layout = ({ children }) => {
 
 //layout
 const StLayout = styled.div`
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,8 +24,10 @@ const StLayout = styled.div`
 `;
 //container
 const Container = styled.div`
+  position: absolute;
+  top: 30px;
   width: 80%;
-  height: 80%;
+  height: 900px;
   border: 3px solid #2ff40a;
 `;
 
