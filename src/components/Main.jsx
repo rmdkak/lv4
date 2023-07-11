@@ -2,16 +2,33 @@ import React from "react";
 import { styled } from "styled-components";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
+import { getPosts } from "../api/posts";
+import { useQuery } from "react-query";
 
 const Main = () => {
   const kategorie = null;
+  const { isLoading, isError, data } = useQuery("posts", getPosts);
+
+  if (isLoading) {
+    return <div>로딩중</div>;
+  }
+
+  if (isError) {
+    return <div>에러</div>;
+  }
+
   return (
     <StMainContainer>
       <Sidebar />
       <StSection>
         <MainList>
           {`//TITLE ${kategorie ?? ""}`}
-          <LinkPost to={"/detail:id"}>{`<a herf=name/>`}</LinkPost>
+          {data.map((item) => (
+            <LinkPost
+              key={item.id}
+              to={`/${item.id}`}
+            >{`<a herf=${item.title}/>`}</LinkPost>
+          ))}
         </MainList>
         <MaskImg src="/pixelMask.png" alt="" />
       </StSection>
@@ -49,6 +66,7 @@ const MainList = styled.ul`
 const LinkPost = styled(Link)`
   font-size: 45px;
   padding: 10px 20px 10px 100px;
+  text-decoration: none;
 `;
 const MaskImg = styled.img`
   margin-left: auto;

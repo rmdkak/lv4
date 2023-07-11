@@ -12,9 +12,12 @@ const Header = () => {
         <CloseImg></CloseImg>
       </StHeadbar>
       <StNav>
-        <button onClick={() => navigate(-1)}>{`<`}</button>
-        <button onClick={() => navigate(+1)}>{`>`}</button>
+        <NavMoveBtnBox>
+          <NavMoveBtn onClick={() => navigate(-1)}>{`<`}</NavMoveBtn>
+          <NavMoveBtn onClick={() => navigate(+1)}>{`>`}</NavMoveBtn>
+        </NavMoveBtnBox>
         <FakeURL>https://www.fakeblog.com</FakeURL>
+        <NavMoveBtn>Login</NavMoveBtn>
       </StNav>
     </StHeader>
   );
@@ -27,6 +30,7 @@ const StHeader = styled.header`
   flex-direction: column;
   justify-content: space-between;
 `;
+
 //헤더 위에 바
 const StHeadbar = styled.div`
   display: flex;
@@ -51,19 +55,31 @@ const CloseImg = styled.div`
 `;
 //헤더 nav바
 const StNav = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
   border-top: 2px solid #2ff40a;
   height: 30px;
 `;
 
+const NavMoveBtnBox = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`;
+
+const NavMoveBtn = styled.button`
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const FakeURL = styled.div`
   border: 2px solid #2ff40a;
-  width: 80%;
   padding-left: 50px;
   font-size: 14px;
   line-height: 20px;
+  margin: 2px;
 `;
 
 export default Header;

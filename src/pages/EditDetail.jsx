@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../components/Layout";
-import WriteForm from "../components/WriteForm";
+import EditForm from "../components/EditForm";
 
 const EditDetail = () => {
   return (
     <Layout>
-      <WriteForm />
+      <EditForm />
     </Layout>
   );
 };

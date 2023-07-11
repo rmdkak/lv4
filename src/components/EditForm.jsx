@@ -1,19 +1,19 @@
-import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import { addPosts } from "../api/posts";
+import { patchPosts } from "../api/posts";
 import { useMutation, useQueryClient } from "react-query";
-import uuid from "react-uuid";
 
-const WriteForm = () => {
+const EditForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const params = useParams();
   const titleRef = useRef("");
   const contentRef = useRef("");
 
-  const mutation = useMutation(addPosts, {
+  const mutation = useMutation(patchPosts, {
     onSuccess: () => {
       queryClient.invalidateQueries("posts");
     },
@@ -32,13 +32,12 @@ const WriteForm = () => {
       return;
     }
 
-    const newPost = {
+    const editPost = {
       title,
       content,
-      id: uuid(),
     };
 
-    mutation.mutate(newPost);
+    mutation.mutate({ id: params.id, editPost });
     setTitle("");
     setContent("");
     navigate("/");
@@ -78,7 +77,6 @@ const StContainer = styled.div`
   height: 93%;
   padding-bottom: 60px;
 `;
-
 const StForm = styled.form`
   border: 2px solid;
   width: 50%;
@@ -142,4 +140,4 @@ const Btn = styled.button`
   }
 `;
 
-export default WriteForm;
+export default EditForm;

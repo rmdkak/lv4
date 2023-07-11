@@ -1,24 +1,45 @@
 import React from "react";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useQuery } from "react-query";
+import { getPosts } from "../api/posts";
+import DeleteModal from "./Modal";
+import { openModal } from "../config/module/modal";
+import { useDispatch, useSelector } from "react-redux";
 
 const DetailForm = () => {
   const navigate = useNavigate();
-  const deletePost = () => {};
+  const params = useParams();
+  const dispatch = useDispatch();
+  const { isLoading, isError, data } = useQuery("posts", getPosts);
+  const isOpen = useSelector((state) => state.modal.isOpen);
+
+  const showModal = () => {
+    dispatch(openModal());
+  };
+
+  if (isLoading) {
+    return <div>로딩중</div>;
+  }
+
+  if (isError) {
+    return <div>에러</div>;
+  }
+
+  const detailPost = data.find((obj) => obj.id === params.id);
+
   return (
     <StContainer>
       <StBox>
-        <TitleBox>title</TitleBox>
-        <ContentBox>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quis
-          et deleniti recusandae distinctio alias quam praesentium iusto autem
-          optio magni adipisci, labore repellendus! Alias quaerat velit
-          exercitationem odit dignissimos.
-        </ContentBox>
+        <TitleBox>{detailPost.title}</TitleBox>
+        <ContentBox>{detailPost.content}</ContentBox>
         <BtnBox>
           <Btn onClick={() => navigate(-1)}>{`type=cancle`}</Btn>
-          <Btn onClick={() => navigate("/edit:id")}>{`type=edit`}</Btn>
-          <Btn onClick={deletePost}>{`type=delete`}</Btn>
+          <Btn
+            onClick={() => navigate(`/edit/${detailPost.id}`)}
+          >{`type=edit`}</Btn>
+          <Btn onClick={showModal}>{`type=delete`}</Btn>
+          {isOpen && <DeleteModal detailPostId={detailPost.id} />}
         </BtnBox>
       </StBox>
     </StContainer>
