@@ -3,19 +3,18 @@ import { styled } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getPosts } from "../api/posts";
-import DeleteModal from "./Modal";
 import { openModal } from "../config/module/modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import Button from "./Button";
 
 const DetailForm = () => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
   const { isLoading, isError, data } = useQuery("posts", getPosts);
-  const isOpen = useSelector((state) => state.modal.isOpen);
 
-  const showModal = () => {
-    dispatch(openModal());
+  const showModal = (id) => {
+    dispatch(openModal({ type: "delete", id }));
   };
 
   if (isLoading) {
@@ -34,12 +33,21 @@ const DetailForm = () => {
         <TitleBox>{detailPost.title}</TitleBox>
         <ContentBox>{detailPost.content}</ContentBox>
         <BtnBox>
-          <Btn onClick={() => navigate(-1)}>{`type=cancle`}</Btn>
-          <Btn
+          <Button
+            size="medium"
+            outlined={true}
+            onClick={() => navigate(-1)}
+          >{`type=cancle`}</Button>
+          <Button
+            size="medium"
+            outlined={true}
             onClick={() => navigate(`/edit/${detailPost.id}`)}
-          >{`type=edit`}</Btn>
-          <Btn onClick={showModal}>{`type=delete`}</Btn>
-          {isOpen && <DeleteModal detailPostId={detailPost.id} />}
+          >{`type=edit`}</Button>
+          <Button
+            size="medium"
+            outlined={true}
+            onClick={() => showModal(detailPost.id)}
+          >{`type=delete`}</Button>
         </BtnBox>
       </StBox>
     </StContainer>
@@ -92,12 +100,12 @@ const BtnBox = styled.div`
   gap: 20px;
 `;
 
-const Btn = styled.button`
-  border: 2px solid #2ff40a;
-  padding: 10px;
-  font-size: 25px;
-  &:hover {
-    cursor: pointer;
-  }
-`;
+// const Btn = styled.button`
+//   border: 2px solid #2ff40a;
+//   padding: 10px;
+//   font-size: 25px;
+//   &:hover {
+//     cursor: pointer;
+//   }
+// `;
 export default DetailForm;

@@ -1,17 +1,22 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import { addPosts } from "../api/posts";
-import { useMutation, useQueryClient } from "react-query";
+import { addPosts, getCategorys } from "../api/posts";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import uuid from "react-uuid";
+import useInput from "../hooks/useInput";
+import Button from "./Button";
 
 const WriteForm = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const { isLoading, isError, data } = useQuery("categorys", getCategorys);
+  const [title, onChangeTitleHandler] = useInput();
+  const [content, onChangecontentHandler] = useInput();
+  const [category, onChangecategoryHandler] = useInput();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const titleRef = useRef("");
   const contentRef = useRef("");
+  const categoryRef = useRef("");
 
   const mutation = useMutation(addPosts, {
     onSuccess: () => {
@@ -30,42 +35,71 @@ const WriteForm = () => {
       alert("내용을 작성해주세요.");
       contentRef.current.focus();
       return;
+    } else if (!category) {
+      alert("카테고리를 선택해주세요.");
+      categoryRef.current.focus();
+      return;
     }
 
     const newPost = {
       title,
       content,
+      category,
       id: uuid(),
     };
 
     mutation.mutate(newPost);
-    setTitle("");
-    setContent("");
     navigate("/");
   };
 
+  if (isLoading) {
+    return <div>로딩중</div>;
+  }
+  if (isError) {
+    return <div>에러</div>;
+  }
   return (
     <StContainer>
       <StForm>
+        <StSelect onChange={onChangecategoryHandler} ref={categoryRef}>
+          <option hidden>
+            --------------------select category--------------------
+          </option>
+          {data.map((item) => (
+            <option key={item.id} value={item.category}>
+              {item.category}
+            </option>
+          ))}
+        </StSelect>
         <InputBox>
           <label>{`//TITLE`}</label>
           <TItleInput
             type="text"
-            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            onChange={onChangeTitleHandler}
             ref={titleRef}
           />
         </InputBox>
         <InputBox>
           <label>{`//CONTENT`}</label>
           <ContentInput
-            onChange={(e) => setContent(e.target.value)}
+            value={content}
+            onChange={onChangecontentHandler}
             ref={contentRef}
           />
         </InputBox>
         <BtnBox>
-          <Btn type="button" onClick={() => navigate(-1)}>{`type=cancle`}</Btn>
-          <Btn>{`type=file`}</Btn>
-          <Btn onClick={postSubmitHandler}>{`type=submit`}</Btn>
+          <Button
+            size="medium"
+            outlined={true}
+            type="button"
+            onClick={() => navigate(-1)}
+          >{`type=cancle`}</Button>
+          <Button
+            size="medium"
+            outlined={true}
+            onClick={postSubmitHandler}
+          >{`type=submit`}</Button>
         </BtnBox>
       </StForm>
     </StContainer>
@@ -77,6 +111,14 @@ const StContainer = styled.div`
   justify-content: center;
   height: 93%;
   padding-bottom: 60px;
+`;
+
+const StSelect = styled.select`
+  width: 400px;
+  font-size: large;
+  padding: 10px;
+  border: 2px solid;
+  outline: none;
 `;
 
 const StForm = styled.form`
@@ -111,7 +153,7 @@ const TItleInput = styled.input`
 const ContentInput = styled.textarea`
   border: 2px solid;
   width: 400px;
-  height: 450px;
+  height: 400px;
   font-size: x-large;
   padding: 10px;
   resize: none;
@@ -131,15 +173,6 @@ const BtnBox = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-`;
-
-const Btn = styled.button`
-  border: 2px solid #2ff40a;
-  padding: 10px;
-  font-size: 25px;
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 export default WriteForm;

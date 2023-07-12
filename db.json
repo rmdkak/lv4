@@ -1,9 +1,46 @@
 {
   "posts": [
     {
-      "title": "테스트",
-      "content": "테스트임다 !",
-      "id": "e5b98c65-0601-a5dc-4c5e-b12370cc9fbd"
+      "title": "asdfasdf",
+      "content": "asdfasdf",
+      "category": "TIL",
+      "id": "e699707c-558c-edf4-3167-585afe85d8a4"
+    },
+    {
+      "title": "aa",
+      "content": "aa",
+      "category": "nothing",
+      "id": "728a4f1f-54c6-6152-bcc4-b4c56ecc535f"
+    },
+    {
+      "title": "타이틀",
+      "content": "<a href=\"\"/>",
+      "category": "WIL",
+      "id": "19114468-28c4-5784-5f43-2be69aa5e6e0"
+    },
+    {
+      "title": "asdfadsfadsf",
+      "content": "adsfadsfadsf",
+      "category": "camp",
+      "id": "666906b6-b8d2-f372-99b5-ee39265c322d"
+    }
+  ],
+  "categorys": [
+    {
+      "category": "nothing",
+      "id": "0d5f7031-8d4b-2000-8731-93510582a33d"
+    },
+    {
+      "category": "TIL",
+      "id": "84893b7f-8ddf-b303-2e2f-330d982ca4f7"
+    },
+    {
+      "category": "WIL",
+      "id": "ac5e111b-c8e0-a3d9-d7c6-6b74fd21ed2c"
+    },
+    {
+      "category": "camp",
+      "id": "1c479311-0a12-6c39-678d-5f8fd0ff062f"
     }
   ]
 }

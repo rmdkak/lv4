@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 import Write from "../pages/Write";
 import EditDetail from "../pages/EditDetail";
+import Category from "../pages/Category";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
         <Route path="/:id" element={<Detail />} />
         <Route path="/write" element={<Write />} />
         <Route path="/edit/:id" element={<EditDetail />} />
+        <Route path="/category/:id" element={<Category />} />
       </Routes>
     </BrowserRouter>
   );

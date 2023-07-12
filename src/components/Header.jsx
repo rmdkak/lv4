@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import Button from "./Button";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,12 +13,12 @@ const Header = () => {
         <CloseImg></CloseImg>
       </StHeadbar>
       <StNav>
-        <NavMoveBtnBox>
-          <NavMoveBtn onClick={() => navigate(-1)}>{`<`}</NavMoveBtn>
-          <NavMoveBtn onClick={() => navigate(+1)}>{`>`}</NavMoveBtn>
-        </NavMoveBtnBox>
+        <NavBtnBox>
+          <NextBtn size="small" onClick={() => navigate(-1)}></NextBtn>
+          <PrevBtn size="small" onClick={() => navigate(+1)}></PrevBtn>
+        </NavBtnBox>
         <FakeURL>https://www.fakeblog.com</FakeURL>
-        <NavMoveBtn>Login</NavMoveBtn>
+        <Button size="small">Login</Button>
       </StNav>
     </StHeader>
   );
@@ -61,16 +62,33 @@ const StNav = styled.nav`
   height: 30px;
 `;
 
-const NavMoveBtnBox = styled.div`
+const NavBtnBox = styled.div`
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 `;
-
-const NavMoveBtn = styled.button`
-  border: none;
-  &:hover {
-    cursor: pointer;
+const PrevBtn = styled(Button)`
+  &::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 15px;
+    border-color: transparent transparent transparent #2ff40a;
+    vertical-align: middle;
+    content: "";
+  }
+`;
+const NextBtn = styled(Button)`
+  &::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 15px 8px 0;
+    border-color: transparent #2ff40a transparent transparent;
+    vertical-align: middle;
+    content: "";
   }
 `;
 

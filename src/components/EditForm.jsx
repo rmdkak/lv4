@@ -1,12 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import { patchPosts } from "../api/posts";
 import { useMutation, useQueryClient } from "react-query";
+import Button from "./Button";
+import useInput from "../hooks/useInput";
 
 const EditForm = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, onChangeTitleHandler] = useInput();
+  const [content, onChangecontentHandler] = useInput();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const params = useParams();
@@ -38,8 +40,6 @@ const EditForm = () => {
     };
 
     mutation.mutate({ id: params.id, editPost });
-    setTitle("");
-    setContent("");
     navigate("/");
   };
 
@@ -50,21 +50,31 @@ const EditForm = () => {
           <label>{`//TITLE`}</label>
           <TItleInput
             type="text"
-            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            onChange={onChangeTitleHandler}
             ref={titleRef}
           />
         </InputBox>
         <InputBox>
           <label>{`//CONTENT`}</label>
           <ContentInput
-            onChange={(e) => setContent(e.target.value)}
+            value={content}
+            onChange={onChangecontentHandler}
             ref={contentRef}
           />
         </InputBox>
         <BtnBox>
-          <Btn type="button" onClick={() => navigate(-1)}>{`type=cancle`}</Btn>
-          <Btn>{`type=file`}</Btn>
-          <Btn onClick={postSubmitHandler}>{`type=submit`}</Btn>
+          <Button
+            size="medium"
+            outlined={true}
+            type="button"
+            onClick={() => navigate(-1)}
+          >{`type=cancle`}</Button>
+          <Button
+            size="medium"
+            outlined={true}
+            onClick={postSubmitHandler}
+          >{`type=submit`}</Button>
         </BtnBox>
       </StForm>
     </StContainer>
@@ -131,13 +141,13 @@ const BtnBox = styled.div`
   gap: 20px;
 `;
 
-const Btn = styled.button`
-  border: 2px solid #2ff40a;
-  padding: 10px;
-  font-size: 25px;
-  &:hover {
-    cursor: pointer;
-  }
-`;
+// const Btn = styled.button`
+//   border: 2px solid #2ff40a;
+//   padding: 10px;
+//   font-size: 25px;
+//   &:hover {
+//     cursor: pointer;
+//   }
+// `;
 
 export default EditForm;
