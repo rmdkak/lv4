@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import { patchPosts } from "../api/posts";
+import { patchPosts } from "../../api/posts";
 import { useMutation, useQueryClient } from "react-query";
-import Button from "./Button";
-import useInput from "../hooks/useInput";
+import Button from "../elem/Button";
+import useInput from "../../hooks/useInput";
 
 const EditForm = () => {
   const [title, onChangeTitleHandler] = useInput();
@@ -66,13 +66,13 @@ const EditForm = () => {
         <BtnBox>
           <Button
             size="medium"
-            outlined={true}
+            border="true"
             type="button"
             onClick={() => navigate(-1)}
           >{`type=cancle`}</Button>
           <Button
             size="medium"
-            outlined={true}
+            border="true"
             onClick={postSubmitHandler}
           >{`type=submit`}</Button>
         </BtnBox>

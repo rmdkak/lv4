@@ -1,10 +1,25 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import Button from "./Button";
+import Button from "../elem/Button";
+import { useLocation, useNavigate } from "react-router-dom";
+// 내가 생각한 방법
+// 그냥 포기하고 초기 화면에 로그인이 안되어있으면 로그인 페이지로 안내
 
-const Header = () => {
+// 창영님 생각
+// 토큰을 스테이트로 관리해서 토큰이 존재할 때 로그아웃을 누르면 토큰이 삭제되고 셋스테이트를 null로 리렌더링 유도
+// 로그인할 땐 저장된 스토리지를 스테이트의 초기값으로 설정
+
+const Header = ({ props }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    if (location.pathname === "/") {
+      window.location.reload();
+    }
+    navigate("/");
+  };
 
   return (
     <StHeader>
@@ -18,7 +33,15 @@ const Header = () => {
           <PrevBtn size="small" onClick={() => navigate(+1)}></PrevBtn>
         </NavBtnBox>
         <FakeURL>https://www.fakeblog.com</FakeURL>
-        <Button size="small">Login</Button>
+        {props ? (
+          <Button size="small" onClick={logOut}>
+            Log-out
+          </Button>
+        ) : (
+          <Button size="small" onClick={() => navigate("/login")}>
+            Log-in
+          </Button>
+        )}
       </StNav>
     </StHeader>
   );

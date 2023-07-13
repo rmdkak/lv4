@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout";
-import EditForm from "../components/EditForm";
+import Layout from "../components/layoutForm/Layout";
+import EditForm from "../components/pageForm/EditForm";
 
 const EditDetail = () => {
   return (

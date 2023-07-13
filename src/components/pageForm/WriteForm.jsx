@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import { addPosts, getCategorys } from "../api/posts";
+import { addPosts, getCategorys } from "../../api/posts";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import uuid from "react-uuid";
-import useInput from "../hooks/useInput";
-import Button from "./Button";
+import useInput from "../../hooks/useInput";
+import Button from "../elem/Button";
 
 const WriteForm = () => {
   const { isLoading, isError, data } = useQuery("categorys", getCategorys);
@@ -91,13 +91,13 @@ const WriteForm = () => {
         <BtnBox>
           <Button
             size="medium"
-            outlined={true}
+            border="true"
             type="button"
             onClick={() => navigate(-1)}
           >{`type=cancle`}</Button>
           <Button
             size="medium"
-            outlined={true}
+            border="true"
             onClick={postSubmitHandler}
           >{`type=submit`}</Button>
         </BtnBox>

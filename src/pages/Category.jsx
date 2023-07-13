@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout";
-import CategoryForm from "../components/CategoryForm";
+import Layout from "../components/layoutForm/Layout";
+import CategoryForm from "../components/pageForm/CategoryForm";
 
 function Category() {
   return (

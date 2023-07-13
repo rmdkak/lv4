@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout";
-import DetailForm from "../components/DetailForm";
+import Layout from "../components/layoutForm/Layout";
+import DetailForm from "../components/pageForm/DetailForm";
 
 const Detail = () => {
   return (

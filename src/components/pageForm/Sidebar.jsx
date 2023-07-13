@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import Button from "../elem/Button";
 import { useDispatch } from "react-redux";
-import { openModal } from "../config/module/modal";
+import { openModal } from "../../config/module/modal";
 import { useQuery } from "react-query";
-import { getCategorys } from "../api/posts";
+import { getCategorys } from "../../api/posts";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -35,8 +35,8 @@ const Sidebar = () => {
       <CategoryBox>
         <StCategory to="/">{`<li HOME/>`}</StCategory>
         {data.map((e) => (
-          <CategoryList>
-            <StCategory key={e.id} to={`/category/${e.category}`}>
+          <CategoryList key={e.id}>
+            <StCategory to={`/category/${e.category}`}>
               {`<li ${e.category}/>`}
             </StCategory>
             <Button size="small" onClick={() => showDeleteModal(e.id)}>
@@ -62,7 +62,7 @@ const Sidebar = () => {
       </CategoryBox>
       <WriteBtn
         size="large"
-        outlined={true}
+        border="true"
         onClick={() => navigate("/write")}
       >{`//WRITE`}</WriteBtn>
     </StSidebar>

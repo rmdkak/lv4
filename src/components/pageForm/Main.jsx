@@ -1,12 +1,12 @@
 import React from "react";
 import { styled } from "styled-components";
 import Sidebar from "./Sidebar";
-import { Link, useParams } from "react-router-dom";
-import { getPosts } from "../api/posts";
+import { Link } from "react-router-dom";
+import { getPosts } from "../../api/posts";
 import { useQuery } from "react-query";
 
-function CategoryForm() {
-  const params = useParams();
+const Main = () => {
+  const kategorie = null;
   const { isLoading, isError, data } = useQuery("posts", getPosts);
 
   if (isLoading) {
@@ -17,15 +17,13 @@ function CategoryForm() {
     return <div>에러</div>;
   }
 
-  const categoryItem = data.filter((e) => e.category === params.id);
-
   return (
     <StMainContainer>
       <Sidebar />
       <StSection>
         <MainList>
-          {`//TITLE ${params.id}`}
-          {categoryItem.map((item) => (
+          {`//TITLE ${kategorie ?? ""}`}
+          {data.map((item) => (
             <LinkPost
               key={item.id}
               to={`/${item.id}`}
@@ -36,7 +34,7 @@ function CategoryForm() {
       </StSection>
     </StMainContainer>
   );
-}
+};
 
 //메인
 const StMainContainer = styled.main`
@@ -80,4 +78,4 @@ const MaskImg = styled.img`
   top: 40px;
 `;
 
-export default CategoryForm;
+export default Main;

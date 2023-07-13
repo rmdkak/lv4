@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout";
-import WriteForm from "../components/WriteForm";
+import Layout from "../components/layoutForm/Layout";
+import WriteForm from "../components/pageForm/WriteForm";
 
 const Write = () => {
   return (

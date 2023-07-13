@@ -2,10 +2,10 @@ import React from "react";
 import { styled } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { getPosts } from "../api/posts";
-import { openModal } from "../config/module/modal";
+import { getPosts } from "../../api/posts";
+import { openModal } from "../../config/module/modal";
 import { useDispatch } from "react-redux";
-import Button from "./Button";
+import Button from "../elem/Button";
 
 const DetailForm = () => {
   const navigate = useNavigate();
@@ -35,17 +35,17 @@ const DetailForm = () => {
         <BtnBox>
           <Button
             size="medium"
-            outlined={true}
+            border="true"
             onClick={() => navigate(-1)}
           >{`type=cancle`}</Button>
           <Button
             size="medium"
-            outlined={true}
+            border="true"
             onClick={() => navigate(`/edit/${detailPost.id}`)}
           >{`type=edit`}</Button>
           <Button
             size="medium"
-            outlined={true}
+            border="true"
             onClick={() => showModal(detailPost.id)}
           >{`type=delete`}</Button>
         </BtnBox>

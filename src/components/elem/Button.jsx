@@ -2,10 +2,7 @@ import React from "react";
 import { css, styled } from "styled-components";
 
 const Button = ({ children, ...rest }) => {
-  return (
-    // <></>
-    <ButtonStyle {...rest}>{children}</ButtonStyle>
-  );
+  return <ButtonStyle {...rest}>{children}</ButtonStyle>;
 };
 
 const ButtonStyle = styled.button`
@@ -27,8 +24,8 @@ const ButtonStyle = styled.button`
         return;
     }
   }}
-  ${({ outlined }) => {
-    if (outlined) {
+  ${({ border }) => {
+    if (border) {
       return css`
         border: 2px solid;
       `;

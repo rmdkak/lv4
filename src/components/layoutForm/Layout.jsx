@@ -1,14 +1,15 @@
 import React from "react";
 import { styled } from "styled-components";
-import Header from "./Header";
+// import Header from "./Header";
 import Footer from "./Footer";
-import Modal from "./Modal";
+import Modal from "../modalForm/Modal";
+import AuthCheck from "../auth/AuthCheck";
 
 const Layout = ({ children }) => {
   return (
     <StLayout>
       <Container>
-        <Header />
+        <AuthCheck />
         <Modal />
         {children}
         <Footer />
