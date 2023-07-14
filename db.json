@@ -1,25 +1,4 @@
 {
-  "posts": [
-    {
-      "title": "TEST",
-      "content": "TEST TEXT",
-      "category": "TEST",
-      "email": "rmdkak@naver.com",
-      "id": "348bbdf0-d705-88b9-8a75-7300860c2301"
-    },
-    {
-      "title": "시발 진ㄴ짜 족같네",
-      "content": "왜 오류뜸 ??? 찐짜 씨빨",
-      "category": "TEST",
-      "email": "rmdkak@naver.com",
-      "id": "b3ce384b-4f6c-059d-1a85-9fe86f1ca45e"
-    }
-  ],
-  "categorys": [
-    {
-      "category": "TEST",
-      "email": "rmdkak@naver.com",
-      "id": "4e7b61bc-eb84-5a41-dff6-b34e4a6d7644"
-    }
-  ]
+  "posts": [],
+  "categorys": []
 }
