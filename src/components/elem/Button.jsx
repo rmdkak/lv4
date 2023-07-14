@@ -19,11 +19,11 @@ const ButtonStyle = styled.button`
         return css`
           font-size: 25px;
           padding: 10px;
-          @media (max-width: 900px) {
+          @media (max-width: 1300px) {
             font-size: 20px;
             padding: 5px;
           }
-          @media (max-width: 700px) {
+          @media (max-width: 1100px) {
             font-size: 15px;
             padding: 5px;
           }
