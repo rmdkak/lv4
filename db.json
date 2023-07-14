@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "title": "aa",
+      "content": "aa",
+      "category": "nothing",
+      "id": "728a4f1f-54c6-6152-bcc4-b4c56ecc535f"
+    },
+    {
+      "title": "타이틀",
+      "content": "<a href=\"\"/>",
+      "category": "WIL",
+      "id": "19114468-28c4-5784-5f43-2be69aa5e6e0"
+    },
+    {
+      "title": "adfjsklasdjfkl",
+      "content": "dfjsakladfjskladjs",
+      "category": "WIL",
+      "id": "bd263b81-b4be-0490-a291-44496718c742"
+    },
+    {
+      "title": "asdf",
+      "content": "adsfadsfads",
+      "category": "WIL",
+      "id": "0da9e412-6d70-dd47-fb06-1804fac32f29"
+    },
+    {
+      "title": "asdfads",
+      "content": "asdfasdfas",
+      "category": "WIL",
+      "id": "a404a751-4574-3472-746e-052c640ad6a1"
+    }
+  ],
+  "categorys": [
+    {
+      "category": "nothing",
+      "id": "0d5f7031-8d4b-2000-8731-93510582a33d"
+    },
+    {
+      "category": "TIL",
+      "id": "84893b7f-8ddf-b303-2e2f-330d982ca4f7"
+    },
+    {
+      "category": "WIL",
+      "id": "ac5e111b-c8e0-a3d9-d7c6-6b74fd21ed2c"
+    },
+    {
+      "category": "camp",
+      "id": "1c479311-0a12-6c39-678d-5f8fd0ff062f"
+    }
+  ]
+}

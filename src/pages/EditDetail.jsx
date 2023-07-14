@@ -1,7 +1,13 @@
 import React from "react";
+import Layout from "../components/layoutForm/Layout";
+import EditForm from "../components/pageForm/EditForm";
 
 const EditDetail = () => {
-  return <div>EditDetail</div>;
+  return (
+    <Layout>
+      <EditForm />
+    </Layout>
+  );
 };
 
 export default EditDetail;

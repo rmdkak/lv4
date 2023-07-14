@@ -1,13 +1,13 @@
 import React from "react";
 import Layout from "../components/layoutForm/Layout";
-import Main from "../components/pageForm/Main";
+import LoginForm from "../components/auth/LoginForm";
 
-const Home = () => {
+function Login() {
   return (
     <Layout>
-      <Main />
+      <LoginForm />
     </Layout>
   );
-};
+}
 
-export default Home;
+export default Login;
