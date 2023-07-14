@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 function Loading() {
   return (
-    <StLoading class="loding">
+    <StLoading className="loding">
       <svg width="1260" height="770" viewBox="0 0 50 50">
         <path
           opacity="0.2"

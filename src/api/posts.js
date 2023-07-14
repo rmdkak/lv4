@@ -9,7 +9,6 @@ const getPosts = async () => {
 
 const addPosts = async (newPost) => {
   const { data } = await instance.post("/posts", newPost);
-  // 성공하면 성공했다는 flag값 하나는 무조건 전달해줌
   return data;
 };
 

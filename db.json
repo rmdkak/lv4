@@ -1,54 +1,25 @@
 {
   "posts": [
     {
-      "title": "테스트용",
-      "content": "테스트 용용 죽겠지",
-      "category": "테스트용",
-      "email": "rmdkak@naver.com",
-      "id": "1a4c5884-fc34-2c03-3179-cdcb6c7fe83c"
-    },
-    {
       "title": "TEST",
-      "content": "TEST",
-      "category": "test",
+      "content": "TEST TEXT",
+      "category": "TEST",
       "email": "rmdkak@naver.com",
-      "id": "0756d5d8-d61b-430a-4463-fb305f666559"
+      "id": "348bbdf0-d705-88b9-8a75-7300860c2301"
     },
     {
-      "title": "이 글은 아무것도 아임다",
-      "content": "제곧내",
-      "category": "카테고리",
+      "title": "시발 진ㄴ짜 족같네",
+      "content": "왜 오류뜸 ??? 찐짜 씨빨",
+      "category": "TEST",
       "email": "rmdkak@naver.com",
-      "id": "15dbf9eb-59e8-34d2-030b-8260c8be1801"
-    },
-    {
-      "title": "nothing here",
-      "content": "really nothing",
-      "category": "Nothing",
-      "email": "rmdkak@naver.com",
-      "id": "ce6bedd2-cd40-08ba-195d-8112522128ba"
+      "id": "b3ce384b-4f6c-059d-1a85-9fe86f1ca45e"
     }
   ],
   "categorys": [
     {
-      "category": "테스트용",
+      "category": "TEST",
       "email": "rmdkak@naver.com",
-      "id": "5e58c068-5dcd-fd9c-84bf-c0ab820bcc69"
-    },
-    {
-      "category": "test",
-      "email": "rmdkak@naver.com",
-      "id": "ffb8ff1a-8622-c69c-6c4e-3686c83fced9"
-    },
-    {
-      "category": "카테고리",
-      "email": "rmdkak@naver.com",
-      "id": "7254cf9b-a2f9-c7b9-2701-8acc7e53f6ad"
-    },
-    {
-      "category": "Nothing",
-      "email": "rmdkak@naver.com",
-      "id": "f3e3f57d-2ef9-f434-480b-3812c93a4ae3"
+      "id": "4e7b61bc-eb84-5a41-dff6-b34e4a6d7644"
     }
   ]
 }
