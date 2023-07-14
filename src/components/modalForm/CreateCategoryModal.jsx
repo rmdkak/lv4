@@ -23,6 +23,7 @@ function CreateCategoryModal() {
   });
 
   const CategoryAddHandler = () => {
+    const email = JSON.parse(localStorage.getItem("token"))?.email;
     if (!category) {
       alert("카테고리 명을 작성해주세요.");
       categoryRef.current.focus();
@@ -30,7 +31,8 @@ function CreateCategoryModal() {
     }
 
     const newCategory = {
-      category: category,
+      category,
+      email,
       id: uuid(),
     };
 
@@ -59,10 +61,10 @@ function CreateCategoryModal() {
           ref={categoryRef}
         />
         <BtnBox>
-          <Button size="small" border="true" onClick={closeModalHandler}>
+          <Button size="small" $outlined={true} onClick={closeModalHandler}>
             취소
           </Button>
-          <Button size="small" border="true" onClick={CategoryAddHandler}>
+          <Button size="small" $outlined={true} onClick={CategoryAddHandler}>
             생성
           </Button>
         </BtnBox>
@@ -73,6 +75,7 @@ function CreateCategoryModal() {
 
 const StCover = styled.div`
   position: fixed;
+  z-index: 2;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -81,7 +84,7 @@ const StCover = styled.div`
 `;
 
 const ModalDiv = styled.div`
-  width: 300px;
+  width: 400px;
   height: 200px;
   z-index: 999;
   position: absolute;
@@ -104,7 +107,7 @@ const BtnBox = styled.div`
 
 const ModalInput = styled.input`
   padding: 5px;
-  width: 250px;
+  width: 300px;
   outline: none;
   border: 2px solid;
 `;

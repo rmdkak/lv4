@@ -1,31 +1,22 @@
 import React from "react";
 import { styled } from "styled-components";
 import Button from "../elem/Button";
-import { useLocation, useNavigate } from "react-router-dom";
-// 내가 생각한 방법
-// 그냥 포기하고 초기 화면에 로그인이 안되어있으면 로그인 페이지로 안내
-
-// 창영님 생각
-// 토큰을 스테이트로 관리해서 토큰이 존재할 때 로그아웃을 누르면 토큰이 삭제되고 셋스테이트를 null로 리렌더링 유도
-// 로그인할 땐 저장된 스토리지를 스테이트의 초기값으로 설정
+import { useNavigate } from "react-router-dom";
+import Xbox from "../elem/Xbox";
 
 const Header = ({ props }) => {
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const logOut = () => {
+  const logOut = async () => {
     localStorage.removeItem("token");
-    if (location.pathname === "/") {
-      window.location.reload();
-    }
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <StHeader>
       <StHeadbar>
-        <LogoImg></LogoImg>
-        <CloseImg></CloseImg>
+        <Logo>B</Logo>
+        <Xbox />
       </StHeadbar>
       <StNav>
         <NavBtnBox>
@@ -33,15 +24,17 @@ const Header = ({ props }) => {
           <PrevBtn size="small" onClick={() => navigate(+1)}></PrevBtn>
         </NavBtnBox>
         <FakeURL>https://www.fakeblog.com</FakeURL>
-        {props ? (
-          <Button size="small" onClick={logOut}>
-            Log-out
-          </Button>
-        ) : (
-          <Button size="small" onClick={() => navigate("/login")}>
-            Log-in
-          </Button>
-        )}
+        <NavBtnBox>
+          {props ? (
+            <LogInOut size="small" onClick={logOut}>
+              Log-out
+            </LogInOut>
+          ) : (
+            <LogInOut size="small" onClick={() => navigate("/login")}>
+              Log-in
+            </LogInOut>
+          )}
+        </NavBtnBox>
       </StNav>
     </StHeader>
   );
@@ -61,22 +54,14 @@ const StHeadbar = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 30px;
-  padding: 2px;
+  padding: 2px 10px 2px 10px;
 `;
 
-const LogoImg = styled.div`
-  border: 2px solid;
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
+const Logo = styled.div`
+  padding-top: 2px;
+  font-size: x-large;
 `;
 
-const CloseImg = styled.div`
-  border: 2px solid;
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-`;
 //헤더 nav바
 const StNav = styled.nav`
   display: grid;
@@ -117,10 +102,14 @@ const NextBtn = styled(Button)`
 
 const FakeURL = styled.div`
   border: 2px solid #2ff40a;
-  padding-left: 50px;
+  padding: 4px 0 0 50px;
   font-size: 14px;
-  line-height: 20px;
   margin: 2px;
+`;
+
+const LogInOut = styled(Button)`
+  width: 50px;
+  padding: 0;
 `;
 
 export default Header;

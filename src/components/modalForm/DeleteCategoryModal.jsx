@@ -40,12 +40,12 @@ function DeleteCategoryModal({ payload }) {
       <ModalDiv ref={modalRef}>
         <div>삭제하시겠습니까?</div>
         <BtnBox>
-          <Button size="small" border="true" onClick={closeModalHandler}>
+          <Button size="small" $outlined={true} onClick={closeModalHandler}>
             취소
           </Button>
           <Button
             size="small"
-            border="true"
+            $outlined={true}
             onClick={() => deleteCategorys(payload)}
           >
             삭제
@@ -58,6 +58,7 @@ function DeleteCategoryModal({ payload }) {
 
 const StCover = styled.div`
   position: fixed;
+  z-index: 2;
   top: 0px;
   left: 0px;
   width: 100%;

@@ -7,19 +7,16 @@ import { useDispatch } from "react-redux";
 import { openModal } from "../../config/module/modal";
 import { useQuery } from "react-query";
 import { getCategorys } from "../../api/posts";
+import Loading from "../queryComponents/Loading";
+import Error from "../queryComponents/Error";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoading, isError, data } = useQuery("categorys", getCategorys);
-
-  if (isLoading) {
-    return <div>로딩중</div>;
-  }
-
-  if (isError) {
-    return <div>에러</div>;
-  }
+  const { isLoading, isError, error, data } = useQuery(
+    "categorys",
+    getCategorys
+  );
 
   const showCreateModal = () => {
     dispatch(openModal({ type: "createCategory" }));
@@ -28,6 +25,20 @@ const Sidebar = () => {
   const showDeleteModal = (id) => {
     dispatch(openModal({ type: "deleteCategory", id }));
   };
+
+  const email = JSON.parse(localStorage.getItem("token"))?.email;
+
+  if (isLoading) {
+    return (
+      <div style={{ width: "254px" }}>
+        <Loading />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <Error error={error?.response.data.message} />;
+  }
 
   return (
     <StSidebar>
@@ -39,7 +50,11 @@ const Sidebar = () => {
             <StCategory to={`/category/${e.category}`}>
               {`<li ${e.category}/>`}
             </StCategory>
-            <Button size="small" onClick={() => showDeleteModal(e.id)}>
+            <XButton
+              size="small"
+              display={e.email === email ? "block" : "none"}
+              onClick={() => showDeleteModal(e.id)}
+            >
               <svg
                 width="15"
                 height="15"
@@ -52,7 +67,7 @@ const Sidebar = () => {
                   fill="#2FF40A"
                 />
               </svg>
-            </Button>
+            </XButton>
           </CategoryList>
         ))}
 
@@ -60,11 +75,11 @@ const Sidebar = () => {
           +
         </Button>
       </CategoryBox>
-      <WriteBtn
+      <Button
         size="large"
-        border="true"
+        $outlined={true}
         onClick={() => navigate("/write")}
-      >{`//WRITE`}</WriteBtn>
+      >{`//WRITE`}</Button>
     </StSidebar>
   );
 };
@@ -101,6 +116,7 @@ const CategoryBox = styled.ul`
 `;
 const CategoryList = styled.li`
   display: flex;
+  text-align: start;
   justify-content: space-between;
 `;
 
@@ -109,9 +125,7 @@ const StCategory = styled(Link)`
   text-decoration: none;
 `;
 
-const WriteBtn = styled(Button)`
-  position: sticky;
-  top: 83%;
+const XButton = styled(Button)`
+  padding: 0;
 `;
-
 export default Sidebar;

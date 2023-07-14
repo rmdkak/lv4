@@ -12,11 +12,21 @@ const ButtonStyle = styled.button`
         return css`
           font-size: 30px;
           padding: 10px 51px 10px 51px;
+          position: sticky;
+          top: 83%;
         `;
       case "medium":
         return css`
           font-size: 25px;
           padding: 10px;
+          @media (max-width: 900px) {
+            font-size: 20px;
+            padding: 5px;
+          }
+          @media (max-width: 700px) {
+            font-size: 15px;
+            padding: 5px;
+          }
         `;
       case "small":
         return css``;
@@ -24,8 +34,9 @@ const ButtonStyle = styled.button`
         return;
     }
   }}
-  ${({ border }) => {
-    if (border) {
+
+  ${({ $outlined }) => {
+    if ($outlined) {
       return css`
         border: 2px solid;
       `;
@@ -34,8 +45,11 @@ const ButtonStyle = styled.button`
         border: none;
       `;
     }
-  }}
-    &:hover {
+  }};
+
+  display: ${(props) => props.display};
+
+  &:hover {
     cursor: pointer;
   }
 `;
