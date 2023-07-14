@@ -1,52 +1,54 @@
 {
   "posts": [
     {
-      "title": "aa",
-      "content": "aa",
-      "category": "nothing",
-      "id": "728a4f1f-54c6-6152-bcc4-b4c56ecc535f"
+      "title": "테스트용",
+      "content": "테스트 용용 죽겠지",
+      "category": "테스트용",
+      "email": "rmdkak@naver.com",
+      "id": "1a4c5884-fc34-2c03-3179-cdcb6c7fe83c"
     },
     {
-      "title": "타이틀",
-      "content": "<a href=\"\"/>",
-      "category": "WIL",
-      "id": "19114468-28c4-5784-5f43-2be69aa5e6e0"
+      "title": "TEST",
+      "content": "TEST",
+      "category": "test",
+      "email": "rmdkak@naver.com",
+      "id": "0756d5d8-d61b-430a-4463-fb305f666559"
     },
     {
-      "title": "adfjsklasdjfkl",
-      "content": "dfjsakladfjskladjs",
-      "category": "WIL",
-      "id": "bd263b81-b4be-0490-a291-44496718c742"
+      "title": "이 글은 아무것도 아임다",
+      "content": "제곧내",
+      "category": "카테고리",
+      "email": "rmdkak@naver.com",
+      "id": "15dbf9eb-59e8-34d2-030b-8260c8be1801"
     },
     {
-      "title": "asdf",
-      "content": "adsfadsfads",
-      "category": "WIL",
-      "id": "0da9e412-6d70-dd47-fb06-1804fac32f29"
-    },
-    {
-      "title": "asdfads",
-      "content": "asdfasdfas",
-      "category": "WIL",
-      "id": "a404a751-4574-3472-746e-052c640ad6a1"
+      "title": "nothing here",
+      "content": "really nothing",
+      "category": "Nothing",
+      "email": "rmdkak@naver.com",
+      "id": "ce6bedd2-cd40-08ba-195d-8112522128ba"
     }
   ],
   "categorys": [
     {
-      "category": "nothing",
-      "id": "0d5f7031-8d4b-2000-8731-93510582a33d"
+      "category": "테스트용",
+      "email": "rmdkak@naver.com",
+      "id": "5e58c068-5dcd-fd9c-84bf-c0ab820bcc69"
     },
     {
-      "category": "TIL",
-      "id": "84893b7f-8ddf-b303-2e2f-330d982ca4f7"
+      "category": "test",
+      "email": "rmdkak@naver.com",
+      "id": "ffb8ff1a-8622-c69c-6c4e-3686c83fced9"
     },
     {
-      "category": "WIL",
-      "id": "ac5e111b-c8e0-a3d9-d7c6-6b74fd21ed2c"
+      "category": "카테고리",
+      "email": "rmdkak@naver.com",
+      "id": "7254cf9b-a2f9-c7b9-2701-8acc7e53f6ad"
     },
     {
-      "category": "camp",
-      "id": "1c479311-0a12-6c39-678d-5f8fd0ff062f"
+      "category": "Nothing",
+      "email": "rmdkak@naver.com",
+      "id": "f3e3f57d-2ef9-f434-480b-3812c93a4ae3"
     }
   ]
 }

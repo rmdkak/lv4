@@ -4,17 +4,18 @@ import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 import { getPosts } from "../../api/posts";
 import { useQuery } from "react-query";
+import Loading from "../queryComponents/Loading";
+import Error from "../queryComponents/Error";
 
 const Main = () => {
-  const kategorie = null;
-  const { isLoading, isError, data } = useQuery("posts", getPosts);
+  const { isLoading, isError, error, data } = useQuery("posts", getPosts);
 
   if (isLoading) {
-    return <div>로딩중</div>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <div>에러</div>;
+    return <Error error={error?.response.data.message} />;
   }
 
   return (
@@ -22,7 +23,7 @@ const Main = () => {
       <Sidebar />
       <StSection>
         <MainList>
-          {`//TITLE ${kategorie ?? ""}`}
+          {`//TITLE`}
           {data.map((item) => (
             <LinkPost
               key={item.id}
@@ -41,7 +42,7 @@ const StMainContainer = styled.main`
   display: grid;
   grid-template-columns: 1fr 5fr;
   height: 93%;
-  padding-bottom: 43px;
+  padding-bottom: 50px;
   overflow: scroll;
   &::-webkit-scrollbar {
     width: 5px;

@@ -4,17 +4,19 @@ import Sidebar from "./Sidebar";
 import { Link, useParams } from "react-router-dom";
 import { getPosts } from "../../api/posts";
 import { useQuery } from "react-query";
+import Loading from "../queryComponents/Loading";
+import Error from "../queryComponents/Error";
 
 function CategoryForm() {
   const params = useParams();
-  const { isLoading, isError, data } = useQuery("posts", getPosts);
+  const { isLoading, isError, error, data } = useQuery("posts", getPosts);
 
   if (isLoading) {
-    return <div>로딩중</div>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <div>에러</div>;
+    return <Error error={error?.response.data.message} />;
   }
 
   const categoryItem = data.filter((e) => e.category === params.id);

@@ -6,9 +6,14 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import uuid from "react-uuid";
 import useInput from "../../hooks/useInput";
 import Button from "../elem/Button";
+import Loading from "../queryComponents/Loading";
+import Error from "../queryComponents/Error";
 
 const WriteForm = () => {
-  const { isLoading, isError, data } = useQuery("categorys", getCategorys);
+  const { isLoading, isError, error, data } = useQuery(
+    "categorys",
+    getCategorys
+  );
   const [title, onChangeTitleHandler] = useInput();
   const [content, onChangecontentHandler] = useInput();
   const [category, onChangecategoryHandler] = useInput();
@@ -25,6 +30,7 @@ const WriteForm = () => {
   });
 
   const postSubmitHandler = (event) => {
+    const email = JSON.parse(localStorage.getItem("token"))?.email;
     event.preventDefault();
 
     if (!title) {
@@ -45,6 +51,7 @@ const WriteForm = () => {
       title,
       content,
       category,
+      email,
       id: uuid(),
     };
 
@@ -53,18 +60,18 @@ const WriteForm = () => {
   };
 
   if (isLoading) {
-    return <div>로딩중</div>;
+    return <Loading />;
   }
+
   if (isError) {
-    return <div>에러</div>;
+    return <Error error={error?.response.data.message} />;
   }
+
   return (
     <StContainer>
       <StForm>
         <StSelect onChange={onChangecategoryHandler} ref={categoryRef}>
-          <option hidden>
-            --------------------select category--------------------
-          </option>
+          <option hidden>-------------select category-------------</option>
           {data.map((item) => (
             <option key={item.id} value={item.category}>
               {item.category}
@@ -91,13 +98,13 @@ const WriteForm = () => {
         <BtnBox>
           <Button
             size="medium"
-            border="true"
+            $outlined={true}
             type="button"
             onClick={() => navigate(-1)}
           >{`type=cancle`}</Button>
           <Button
             size="medium"
-            border="true"
+            $outlined={true}
             onClick={postSubmitHandler}
           >{`type=submit`}</Button>
         </BtnBox>
@@ -113,14 +120,6 @@ const StContainer = styled.div`
   padding-bottom: 60px;
 `;
 
-const StSelect = styled.select`
-  width: 400px;
-  font-size: large;
-  padding: 10px;
-  border: 2px solid;
-  outline: none;
-`;
-
 const StForm = styled.form`
   border: 2px solid;
   width: 50%;
@@ -131,18 +130,27 @@ const StForm = styled.form`
   padding: 10px;
   gap: 20px;
 `;
+//카테고리 셀렉트창
+const StSelect = styled.select`
+  width: 55%;
+  font-size: large;
+  padding: 10px;
+  border: 2px solid;
+  outline: none;
+`;
 //인풋창
 const InputBox = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
-  align-items: baseline;
+  align-items: center;
   font-size: xx-large;
   gap: 10px;
 `;
 
 const TItleInput = styled.input`
   border: 2px solid;
-  width: 400px;
+  width: 55%;
   font-size: x-large;
   padding: 10px;
   &:focus {
@@ -152,7 +160,7 @@ const TItleInput = styled.input`
 
 const ContentInput = styled.textarea`
   border: 2px solid;
-  width: 400px;
+  width: 55%;
   height: 400px;
   font-size: x-large;
   padding: 10px;
@@ -173,6 +181,11 @@ const BtnBox = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export default WriteForm;

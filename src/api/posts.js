@@ -53,7 +53,8 @@ const loginUser = async (logInData) => {
 };
 
 const getUser = async () => {
-  const token = localStorage.getItem("token");
+  const token = JSON.parse(localStorage.getItem("token"))?.token;
+  if (token === undefined) return;
   const { data } = await axios.get(`${process.env.REACT_APP_LOGIN_URL}/user`, {
     headers: {
       Authorization: `Bearer ${token}`,

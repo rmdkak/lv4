@@ -8,7 +8,8 @@ License: none (public domain)
 * { 
     box-sizing: border-box;
     background-color: #000;
-    color: #2FF40A
+    color: #2FF40A;
+    font-family: 'NeoDunggeunmo';
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -27,7 +28,7 @@ margin: 0;
 padding: 0;
 border: 0;
 font-size: 100%;
-font: inherit;
+/* font: inherit; */
 vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
