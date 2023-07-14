@@ -115,7 +115,7 @@ const BtnBox = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  @media (max-width: 1600px) {
+  @media (max-width: 850px) {
     display: flex;
     flex-direction: column;
   }
